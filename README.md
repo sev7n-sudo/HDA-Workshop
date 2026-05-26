@@ -21,27 +21,14 @@ Before starting, ensure you have the following installed on your machine:
 - `netcat (nc)` — Reverse shell listener
 - `gobuster` — Directory enumeration
 
-### Brute Force Login with ffuf
-```bash
-# Brute force password for a known username
-ffuf -u http://<host-ip>:3010/api/login \
-  -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"FUZZ"}' \
-  -w /usr/share/wordlists/rockyou.txt \
-  -fc 401
-```
-
-> **Tip:** Use `-fc 401` to filter out failed login responses (401 Unauthorized) and only show successful ones.
-
 ---
 
 ## Quick Start (Deployment)
 
 ### Step 1: Clone the Repository
 ```bash
-git clone <repository-url>
-cd vulnerable-web-workshop
+git clone https://github.com/sev7n-sudo/HDA-Workshop.git
+cd HDA-Workshop
 ```
 
 ### Step 2: Start the Application with Docker
@@ -111,15 +98,22 @@ curl http://<host-ip>:3010
 
 ## Workshop Steps
 
-| Step | Topic | Target |
-|------|-------|--------|
-| 1 | Reconnaissance | Web App |
-| 2 | SQL Injection | Web App (`/api/search`) |
-| 3 | Broken Authentication | Web App (`/api/login`) |
-| 4 | File Upload & RCE | Web App (`/api/upload`) |
-| 5 | Command Injection | Web App (`/api/exec`) |
-| 6 | Reverse Shell | Web App → Kali |
-| 7 | Privilege Escalation | Ubuntu Target |
+| Step | Topic | Target | Guide |
+|------|-------|--------|-------|
+| 1 | Reconnaissance | Web App | [step-01-recon.md](src/workshop/step-01-recon.md) |
+| 2 | SQL Injection | Web App (`/api/search`) | [step-02-sql-injection.md](src/workshop/step-02-sql-injection.md) |
+| 3 | Broken Authentication | Web App (`/api/login`) | [step-03-broken-auth.md](src/workshop/step-03-broken-auth.md) |
+| 4 | File Upload & RCE | Web App (`/api/upload`) | [step-04-file-upload-rce.md](src/workshop/step-04-file-upload-rce.md) |
+| 5 | Command Injection | Web App (`/api/exec`) | [step-05-command-injection.md](src/workshop/step-05-command-injection.md) |
+| 6 | Reverse Shell | Web App → Kali | [step-06-reverse-shell.md](src/workshop/step-06-reverse-shell.md) |
+| 7 | Privilege Escalation | Ubuntu Target | [step-07-privilege-escalation-ubuntu.md](src/workshop/step-07-privilege-escalation-ubuntu.md) |
+
+> 📖 **Need help?** Click the **Guide** link for each step to see detailed instructions, example commands, and explanations.
+
+### Additional Resources
+- [Commands Cheatsheet](src/workshop/commands-cheatsheet.md) — Quick reference for all commands used in the workshop
+- [Student Guide](docs/student-guide.md) — Overview and tips for students
+- [Instructor Guide](docs/instructor-guide.md) — Setup and teaching notes for instructors
 
 ---
 
