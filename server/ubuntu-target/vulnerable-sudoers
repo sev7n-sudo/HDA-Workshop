@@ -1,0 +1,3 @@
+workshop ALL=(ALL) NOPASSWD: /usr/bin/find
+workshop ALL=(ALL) NOPASSWD: /usr/bin/python3
+workshop ALL=(ALL) NOPASSWD: /usr/bin/less
