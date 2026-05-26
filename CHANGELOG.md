@@ -2,6 +2,12 @@
 
 All notable changes to this workshop will be documented in this file.
 
+## [1.0.1] - 2026-05-27
+
+### Added
+- Recommended system specs table (minimum & recommended hardware)
+- Low-spec tip for students with limited resources
+
 ## [1.0.0] - 2026-05-27
 
 ### Added

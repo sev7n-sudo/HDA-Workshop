@@ -14,6 +14,18 @@ Before starting, ensure you have the following installed on your machine:
 | [Git](https://git-scm.com/) | Latest | Clone the repository |
 | [Kali Linux](https://www.kali.org/) (VM or bare metal) | Latest | Attack machine with pre-installed tools |
 
+### Recommended System Specs
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| RAM | 4 GB | 8 GB or more |
+| CPU | 2 cores | 4 cores |
+| Disk Space | 10 GB free | 20 GB free |
+| OS (Host) | Windows 10 / macOS 11 / Ubuntu 20.04 | Latest stable |
+| Network | Wi-Fi or Ethernet | Same LAN for host & Kali |
+
+> **Low-spec tip:** If your machine has less than 8 GB RAM, close unnecessary applications before running Docker. You can also run Kali as a lightweight CLI-only VM (no GUI) to save resources.
+
 ### Kali Tools Used
 - `nmap` — Port scanning & service detection
 - `ffuf` — Web fuzzing & brute force login
